@@ -1,0 +1,17 @@
+digraph architecture {
+  slack [label="Slack API" shape="egg" fillcolor="mediumslateblue" style="filled"];
+  cb [label="CodeBuild Builds" shape="rect" fillcolor="seagreen1" style="filled"];
+
+  subgraph cluster_gw {
+    color="black";
+    fn [label="tf-codebuild-sns-slack (λ)" shape="rect" fillcolor="orange" style="filled"];
+    cwstate [label="State (Cloudwatch Event Rule)" shape="rect" fillcolor="darkslategray4" style="filled"];
+    cwphase [label="Phase (Cloudwatch Event Rule)" shape="rect" fillcolor="darkslategray4" style="filled"];
+    sns [label="Codebuild (SNS)" shape="rect" fillcolor="gold" style="filled"];
+  }
+
+  cb -> cwstate,cwphase
+  cwstate,cwphase -> sns
+  sns -> fn;
+  fn -> slack
+}

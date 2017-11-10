@@ -1,0 +1,15 @@
+version: '2'
+services:
+  tf-codebuild-sns-slack:
+    build:
+      context: .
+      dockerfile: ./test/Dockerfile.test
+    command: npm run coverage
+    environment:
+      CONFIG_PARAMETER_NAMES: foo,bar
+      #DEBUG: app-container*
+      LOG_LEVEL: fatal
+      NODE_ENV: test
+    volumes:
+     - .:/home/app/src
+     - /home/app/src/node_modules
