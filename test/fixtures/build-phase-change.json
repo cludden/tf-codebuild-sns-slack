@@ -1,0 +1,73 @@
+{
+    "version": "0",
+    "id": "a4ec55c3-fdc2-60d8-03e5-cd46286657c2",
+    "detail-type": "CodeBuild Build Phase Change",
+    "source": "aws.codebuild",
+    "account": "123456789012",
+    "time": "2017-11-09T22:12:22Z",
+    "region": "us-east-1",
+    "resources": [
+        "arn:aws:codebuild:us-east-1:123456789012:build/my-repo:2af9d276-fec1-48d5-b594-6e4830b4e33e"
+    ],
+    "detail": {
+        "completed-phase": "PROVISIONING",
+        "project-name": "my-repo",
+        "build-id": "arn:aws:codebuild:us-east-1:123456789012:build/my-repo:2af9d276-fec1-48d5-b594-6e4830b4e33e",
+        "completed-phase-context": "[: ]",
+        "additional-information": {
+            "artifact": {
+                "location": ""
+            },
+            "environment": {
+                "image": "aws/codebuild/docker:1.12.1",
+                "privileged-mode": true,
+                "compute-type": "BUILD_GENERAL1_MEDIUM",
+                "type": "LINUX_CONTAINER"
+            },
+            "timeout-in-minutes": 60,
+            "build-complete": false,
+            "initiator": "codebuild-trigger/codebuild-trigger",
+            "build-start-time": "Nov 9, 2017 10:12:22 PM",
+            "source": {
+                "buildspec": "buildspec.pr.yml",
+                "location": "https://github.com/example/my-repo",
+                "type": "GITHUB"
+            },
+            "source-version": "pr/6",
+            "logs": {
+                "group-name": "/aws/codebuild/my-repo",
+                "stream-name": "2af9d276-fec1-48d5-b594-6e4830b4e33e",
+                "deep-link": "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logEvent:group=/aws/codebuild/my-repo;stream=2af9d276-fec1-48d5-b594-6e4830b4e33e"
+            },
+            "phases": [
+                {
+                    "phase-context": [],
+                    "start-time": "Nov 9, 2017 10:12:22 PM",
+                    "end-time": "Nov 9, 2017 10:12:22 PM",
+                    "duration-in-seconds": 0,
+                    "phase-type": "SUBMITTED",
+                    "phase-status": "SUCCEEDED"
+                },
+                {
+                    "phase-context": [
+                        ": "
+                    ],
+                    "start-time": "Nov 9, 2017 10:12:22 PM",
+                    "end-time": "Nov 9, 2017 10:12:44 PM",
+                    "duration-in-seconds": 21,
+                    "phase-type": "PROVISIONING",
+                    "phase-status": "SUCCEEDED"
+                },
+                {
+                    "start-time": "Nov 9, 2017 10:12:44 PM",
+                    "phase-type": "DOWNLOAD_SOURCE"
+                }
+            ]
+        },
+        "completed-phase-status": "SUCCEEDED",
+        "completed-phase-duration-seconds": 21,
+        "version": "1",
+        "completed-phase-start": "Nov 9, 2017 10:12:22 PM",
+        "completed-phase-end": "Nov 9, 2017 10:12:44 PM"
+    }
+}

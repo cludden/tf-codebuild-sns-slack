@@ -13,11 +13,43 @@ resource "aws_lambda_function" "codebuild_sns_slack" {
 
   environment {
     variables = {
-      "CONFIG_PARAMETER_NAMES" = "${var.config_parameter_names}"
+      "CONFIG_PARAMETER_NAMES" = "${join(",", compact(list("${var.config_parameter_name}", "${var.additional_parameter_names}")))}"
       "DEBUG"                  = "${var.debug}"
       "NODE_ENV"               = "${var.node_env}"
     }
   }
+}
+
+# define terraform managed configuration
+resource "aws_ssm_parameter" "configuration" {
+  name      = "${var.config_parameter_name}"
+  type      = "SecureString"
+  value     = "${data.template_file.configuration.rendered}"
+  overwrite = true
+}
+
+data "template_file" "configuration" {
+  template = "${file("${path.module}/configuration.json")}"
+
+  vars {
+    sns_topic_arn = "${aws_sns_topic.codebuild_sns_slack.arn}"
+  }
+}
+
+# subscribe lambda function to gibhub webhook sns topic
+resource "aws_sns_topic_subscription" "codebuild_sns_slack" {
+  topic_arn = "${aws_sns_topic.codebuild_sns_slack.arn}"
+  protocol  = "lambda"
+  endpoint  = "${aws_lambda_function.codebuild_sns_slack.arn}"
+}
+
+# allow sns to invoke trigger function
+resource "aws_lambda_permission" "codebuild_sns_slack" {
+  statement_id  = "AllowExecutionFromSNS-${var.name}"
+  action        = "lambda:InvokeFunction"
+  function_name = "${aws_lambda_function.codebuild_sns_slack.function_name}"
+  principal     = "sns.amazonaws.com"
+  source_arn    = "${aws_sns_topic.codebuild_sns_slack.arn}"
 }
 
 # include cloudwatch log group resource definition in order to ensure it is
@@ -62,7 +94,7 @@ data "aws_iam_policy_document" "codebuild_sns_slack" {
     effect = "Allow"
 
     resources = [
-      "${formatlist("arn:aws:ssm:${var.region}:${data.aws_caller_identity.current.account_id}:parameter%s", split(",", "${var.config_parameter_names}"))}",
+      "${formatlist("arn:aws:ssm:${var.region}:${data.aws_caller_identity.current.account_id}:parameter%s", split(",", "${var.config_parameter_name},${var.additional_parameter_names}"))}",
     ]
   }
 

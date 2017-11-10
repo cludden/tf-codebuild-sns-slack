@@ -48,8 +48,17 @@ export async function handler(e, ctx, done) {
  * @return {Promise}
  */
 export async function processEvent(e, { log, slack, sns }) {
-  const messages = await sns.extractMessages(e, { log });
-  log.debug({ messages }, 'messages');
+  const events = await sns.extractEvents(e, { log });
+  if (!events.length) {
+    return NOOP;
+  }
+  const messages = events.reduce((acc, p) => {
+    const text = slack.buildMessage(p);
+    if (text !== null) {
+      acc.push(text);
+    }
+    return acc;
+  }, []);
   if (!messages.length) {
     return NOOP;
   }

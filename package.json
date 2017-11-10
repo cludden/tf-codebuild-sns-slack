@@ -1,6 +1,6 @@
 {
   "name": "tf-codebuild-sns-slack",
-  "version": "1.0.0-beta.2",
+  "version": "0.0.0",
   "description": "a node.js lambda function that forwards codebuild events to slack via SNS",
   "main": "./dist/index.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "axios": "^0.17.0",
     "bluebird": "https://registry.npmjs.org/bluebird/-/bluebird-3.5.1.tgz",
     "bunyan": "^1.8.12",
+    "lodash.attempt": "^4.2.0",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.0",
     "source-map-support": "https://registry.npmjs.org/source-map-support/-/source-map-support-0.4.18.tgz"

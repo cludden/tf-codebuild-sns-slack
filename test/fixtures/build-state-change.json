@@ -1,0 +1,140 @@
+{
+  "version": "0",
+  "id": "f3c75247-a319-8d5c-3c19-520e6b920b17",
+  "detail-type": "CodeBuild Build State Change",
+  "source": "aws.codebuild",
+  "account": "123456789012",
+  "time": "2017-11-09T22:15:15Z",
+  "region": "us-east-1",
+  "resources": [
+    "arn:aws:codebuild:us-east-1:123456789012:build/my-repo:2af9d276-fec1-48d5-b594-6e4830b4e33e"
+  ],
+  "detail": {
+    "build-status": "SUCCEEDED",
+    "project-name": "my-repo",
+    "build-id": "arn:aws:codebuild:us-east-1:123456789012:build/my-repo:2af9d276-fec1-48d5-b594-6e4830b4e33e",
+    "additional-information": {
+      "artifact": {
+        "location": ""
+      },
+      "environment": {
+        "image": "aws/codebuild/docker:1.12.1",
+        "privileged-mode": true,
+        "compute-type": "BUILD_GENERAL1_MEDIUM",
+        "type": "LINUX_CONTAINER"
+      },
+      "timeout-in-minutes": 60,
+      "build-complete": true,
+      "initiator": "codebuild-trigger/codebuild-trigger",
+      "build-start-time": "Nov 9, 2017 10:12:22 PM",
+      "source": {
+        "buildspec": "buildspec.pr.yml",
+        "location": "https://github.com/example/my-repo",
+        "type": "GITHUB"
+      },
+      "source-version": "pr/6",
+      "logs": {
+        "group-name": "/aws/codebuild/my-repo",
+        "stream-name": "2af9d276-fec1-48d5-b594-6e4830b4e33e",
+        "deep-link": "https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logEvent:group=/aws/codebuild/my-repo;stream=2af9d276-fec1-48d5-b594-6e4830b4e33e"
+      },
+      "phases": [
+        {
+          "phase-context": [],
+          "start-time": "Nov 9, 2017 10:12:22 PM",
+          "end-time": "Nov 9, 2017 10:12:22 PM",
+          "duration-in-seconds": 0,
+          "phase-type": "SUBMITTED",
+          "phase-status": "SUCCEEDED"
+        },
+        {
+          "phase-context": [
+            ": "
+          ],
+          "start-time": "Nov 9, 2017 10:12:22 PM",
+          "end-time": "Nov 9, 2017 10:12:44 PM",
+          "duration-in-seconds": 21,
+          "phase-type": "PROVISIONING",
+          "phase-status": "SUCCEEDED"
+        },
+        {
+          "phase-context": [
+            ": "
+          ],
+          "start-time": "Nov 9, 2017 10:12:44 PM",
+          "end-time": "Nov 9, 2017 10:12:47 PM",
+          "duration-in-seconds": 3,
+          "phase-type": "DOWNLOAD_SOURCE",
+          "phase-status": "SUCCEEDED"
+        },
+        {
+          "phase-context": [
+            ": "
+          ],
+          "start-time": "Nov 9, 2017 10:12:47 PM",
+          "end-time": "Nov 9, 2017 10:12:50 PM",
+          "duration-in-seconds": 2,
+          "phase-type": "INSTALL",
+          "phase-status": "SUCCEEDED"
+        },
+        {
+          "phase-context": [
+            ": "
+          ],
+          "start-time": "Nov 9, 2017 10:12:50 PM",
+          "end-time": "Nov 9, 2017 10:14:39 PM",
+          "duration-in-seconds": 109,
+          "phase-type": "PRE_BUILD",
+          "phase-status": "SUCCEEDED"
+        },
+        {
+          "phase-context": [
+            ": "
+          ],
+          "start-time": "Nov 9, 2017 10:14:39 PM",
+          "end-time": "Nov 9, 2017 10:15:02 PM",
+          "duration-in-seconds": 22,
+          "phase-type": "BUILD",
+          "phase-status": "SUCCEEDED"
+        },
+        {
+          "phase-context": [
+            ": "
+          ],
+          "start-time": "Nov 9, 2017 10:15:02 PM",
+          "end-time": "Nov 9, 2017 10:15:02 PM",
+          "duration-in-seconds": 0,
+          "phase-type": "POST_BUILD",
+          "phase-status": "SUCCEEDED"
+        },
+        {
+          "phase-context": [
+            ": "
+          ],
+          "start-time": "Nov 9, 2017 10:15:02 PM",
+          "end-time": "Nov 9, 2017 10:15:02 PM",
+          "duration-in-seconds": 0,
+          "phase-type": "UPLOAD_ARTIFACTS",
+          "phase-status": "SUCCEEDED"
+        },
+        {
+          "phase-context": [
+            ": "
+          ],
+          "start-time": "Nov 9, 2017 10:15:02 PM",
+          "end-time": "Nov 9, 2017 10:15:04 PM",
+          "duration-in-seconds": 2,
+          "phase-type": "FINALIZING",
+          "phase-status": "SUCCEEDED"
+        },
+        {
+          "start-time": "Nov 9, 2017 10:15:04 PM",
+          "phase-type": "COMPLETED"
+        }
+      ]
+    },
+    "current-phase": "COMPLETED",
+    "current-phase-context": "[: ]",
+    "version": "1"
+  }
+}

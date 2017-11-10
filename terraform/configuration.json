@@ -1,0 +1,8 @@
+{
+  "log": {
+    "level": "info"
+  },
+  "sns": {
+    "topic_arn": "${sns_topic_arn}"
+  }
+}

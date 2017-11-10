@@ -1,4 +1,10 @@
-variable "config_parameter_names" {
+variable "additional_parameter_names" {
+  type        = "string"
+  description = "additional ssm parameters"
+  default     = ""
+}
+
+variable "config_parameter_name" {
   type        = "string"
   description = "name of terraform managed ssm parameter"
 }

@@ -63,7 +63,7 @@ Define custom configuration
 
 Add JSON configuration to ssm
 ```shell
-$ aws ssm put-parameter --name /secrets/codebuild-trigger/custom --type SecureString --value $JSONCONFIG
+$ aws ssm put-parameter --name /secrets/codebuild-sns-slack/custom --type SecureString --value $JSONCONFIG
 ```
 
 ## Deploying
@@ -71,6 +71,7 @@ Via terraform
 ```
 module "codebuild_trigger" {
   source                     = "git::git@github.com:cludden/tf-codebuild-sns-slack.git//terraform?ref={version}"
+  additional_parameter_names = "/secrets/codebuild-sns-slack/custom"
   config_parameter_name      = "/secrets/codebuild-sns-slack"
   debug                      = ""
   memory_size                = 128
